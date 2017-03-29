@@ -1,0 +1,41 @@
+<launch>
+
+  <rosparam param="/integration_method">2</rosparam>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="worlds/willowgarage.world"/> <!-- Note: the world_name is with respect to GAZEBO_RESOURCE_PATH environmental variable -->
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <node name="model_spawner" pkg="gazebo_ros" type="spawn_model"
+    args="-file $(find delbono_kobra)/models/DelbonoKobra/model.sdf -sdf -z 1 -model DelbonoKobra" />
+
+  <node pkg="delbono_kobra" type="delbono_kobra_tf_broadcaster"
+        name="delbono_kobra_tf_broadcaster"/>
+
+  <node pkg="delbono_kobra" type="delbono_kobra_tf_broadcaster_camera"
+        name="delbono_kobra_tf_broadcaster_camera" />
+
+  <node respawn="true" pkg="joy" type="joy_node" name="joy_controller" >
+            <param name="dev" type="string" value="/dev/input/js0" />
+  </node>
+
+  <node pkg="delbono_kobra" type="teleop_joy" name="teleop_joy" />
+
+  <rosparam param="use_sim_time">true</rosparam>
+
+  <node pkg="gmapping" type="slam_gmapping" name="gmapping_thing" output="screen" >
+    <param name="scan" value="scan" />
+    <param name="map_frame" value="map" />
+    <param name="odom_frame" value="odom" />
+    <param name="base_frame" value="simulator_odometry" />
+  </node>
+
+
+
+
+</launch>

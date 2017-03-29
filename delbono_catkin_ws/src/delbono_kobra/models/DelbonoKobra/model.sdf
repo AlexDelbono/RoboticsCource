@@ -1,0 +1,418 @@
+<?xml version='1.0'?>
+<sdf version='1.4'>
+
+  <model name="DelbonoKobra">
+
+    <static>false</static>
+    <link name='chassis'>
+
+      <inertial>
+        <mass>9</mass>
+        <inertia>
+          <ixx>9</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>9</iyy>
+          <iyz></iyz>
+          <izz>9</izz>
+        </inertia>
+      </inertial>
+
+      <pose>0 0 .1725 0 0 0</pose>
+      <collision name='body'>
+        <geometry>
+          <box>
+            <size>.4 .39 .2</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name='body'>
+        <geometry>
+          <box>
+            <size>.4 .39 .2</size>
+          </box>
+        </geometry>
+      </visual>
+
+
+      <collision name='vert_arm'>
+        <pose>.1 0 .3 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>.025</radius>
+            <length>.4</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='vert_arm'>
+        <pose>.1 0 .3 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>.025</radius>
+            <length>.4</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+    </link>
+
+
+    <link name='left_forw_wheel'>
+      <pose>.09 .2475 .0725 0 1.5707 1.5707</pose>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>1</iyy>
+          <iyz></iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint type="revolute" name="left_forw_wheel_hinge">
+      <pose>0 0 .0725 0 0 0</pose>
+      <child>left_forw_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name='right_forw_wheel'>
+      <pose>.09 -0.2475 .0725 0 1.5707 1.5707</pose>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>1</iyy>
+          <iyz></iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint type="revolute" name="right_forw_wheel_hinge">
+      <pose>0 0 .0725 0 0 0</pose>
+      <child>right_forw_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name='left_back_wheel'>
+      <pose>-0.09 .2475 .0725 0 1.5707 1.5707</pose>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>1</iyy>
+          <iyz></iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint type="revolute" name="left_back_wheel_hinge">
+      <pose>0 0 .0725 0 0 0</pose>
+      <child>left_back_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <link name='right_back_wheel'>
+      <pose>-0.09 -0.2475 .0725 0 1.5707 1.5707</pose>
+
+      <inertial>
+        <mass>1</mass>
+        <inertia>
+          <ixx>1</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>1</iyy>
+          <iyz></iyz>
+          <izz>1</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.0725</radius>
+            <length>.045</length>
+          </cylinder>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint type="revolute" name="right_back_wheel_hinge">
+      <pose>0 0 .0725 0 0 0</pose>
+      <child>right_back_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+
+    <link name='cam_base'>
+      <pose>.1 0 .7175 0 0 0</pose>
+
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>0.5</iyy>
+          <iyz></iyz>
+          <izz>0.5</izz>
+        </inertia>
+      </inertial>
+
+      <collision name='collision'>
+        <geometry>
+          <cylinder>
+            <radius>.1</radius>
+            <length>.09</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='visual'>
+        <geometry>
+          <cylinder>
+            <radius>.1</radius>
+            <length>.09</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+    </link>
+
+    <joint type="revolute" name="pan_camera">
+      <pose>0 0 0 0 0 0</pose>
+      <child>cam_base</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+
+    <link name='cam_supp'>
+      <pose>.1 0 .8125 0 0 0</pose>
+
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.5</ixx>
+          <ixy></ixy>
+          <ixz></ixz>
+          <iyy>0.5</iyy>
+          <iyz></iyz>
+          <izz>0.5</izz>
+        </inertia>
+      </inertial>
+
+
+      <collision name='collision'>
+        <geometry>
+          <sphere>
+            <radius>0.07</radius>
+          </sphere>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+              <slip1>0</slip1>
+              <slip2>0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='visual'>
+        <geometry>
+          <sphere>
+            <radius>0.07</radius>
+          </sphere>
+        </geometry>
+      </visual>
+
+      <sensor type="camera" name="camera1">
+        <camera>
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+              <width>320</width>
+              <height>240</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>true</visualize>
+        <!plugin name="camera_publisher" filename="libcamera_publisher_plugin.so"/>
+        <plugin name="camera_images" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>30.0</updateRate>
+          <cameraName>DelbonoKobra/camera</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+        </plugin>
+      </sensor>
+    </link>
+
+    <joint type="revolute" name="tilt_camera">
+      <pose>0 0 0 0 0 0</pose>
+      <child>cam_supp</child>
+      <parent>cam_base</parent>
+      <axis>
+        <xyz>0 1 0</xyz>
+      </axis>
+    </joint>
+
+    <include>
+      <uri>model://myHokuyo</uri>
+      <pose>0.2 0 0.18 0 0 0</pose>
+    </include>
+
+    <joint name="hokuyo_joint" type="fixed">
+      <child>myHokuyo::link</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+
+
+    <plugin name="differential_drive_controller" filename="libdiff_drive_plugin.so">
+    </plugin>
+
+    <plugin name="pan_tilt_camera_controller" filename="libpan_tilt_camera_plugin.so">
+    </plugin>
+
+
+
+  </model>
+</sdf>
